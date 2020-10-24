@@ -12,7 +12,7 @@ namespace LdapTools\Bundle\LdapToolsBundle\Doctrine\Subscriber;
 
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use LdapTools\Bundle\LdapToolsBundle\Annotation\LdapObject as LdapObjectAnnotation;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use LdapTools\LdapManager;
@@ -272,7 +272,7 @@ class LdapObjectSubscriber implements EventSubscriber
      */
     protected function getOmFromLifeCycleArgs(LifecycleEventArgs $args)
     {
-        $rc = new \ReflectionClass('Doctrine\Common\Persistence\Event\LifecycleEventArgs');
+        $rc = new \ReflectionClass('Doctrine\Persistence\Event\LifecycleEventArgs');
 
         if ($rc->hasMethod('getObjectManager')) {
             return $args->getObjectManager();
